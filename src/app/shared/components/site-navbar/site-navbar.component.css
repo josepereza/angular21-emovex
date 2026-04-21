@@ -1,0 +1,90 @@
+.navbar-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: blur(0);
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease,
+    border-color 220ms ease;
+  border-bottom: 1px solid transparent;
+}
+
+
+.navbar-shell--solid {
+  background: rgba(25, 35, 51, 0.88);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 60px rgba(22, 31, 43, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.brand-mark {
+  font-family: 'Trebuchet MS', 'Aptos', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: white;
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.language-switch__btn {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.language-switch__btn.is-active {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.navbar-toggler-icon {
+  background-image: var(--bs-navbar-toggler-icon-bg);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 1.25rem;
+    background: rgba(25, 35, 51, 0.94);
+    box-shadow: 0 24px 60px rgba(22, 31, 43, 0.1);
+  }
+
+  .language-switch {
+    margin: 0.4rem 0;
+  }
+}

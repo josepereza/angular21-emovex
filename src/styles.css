@@ -1,0 +1,151 @@
+:root {
+  --color-ink: #192333;
+  --color-surface: #f4f2ec;
+  --color-surface-muted: #eeebe4;
+  --color-muted: #5d6776;
+  --color-accent: #cae8df;
+  --color-accent-strong: #4c8f7d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', 'Segoe UI Variable', 'Aptos', sans-serif;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display-font,
+.hero-title,
+.section-title {
+  font-family: 'Playfair Display', 'Trebuchet MS', serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.py-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+.btn-accent {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1.45rem;
+  background: linear-gradient(135deg, #cae8df, #f6d9c9);
+  color: var(--color-ink);
+  font-weight: 700;
+  box-shadow: 0 14px 40px rgba(25, 35, 51, 0.14);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 18px 44px rgba(25, 35, 51, 0.18);
+  filter: saturate(1.05);
+}
+
+.reveal-fade,
+.reveal-up {
+  animation-duration: 760ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-fade {
+  animation-name: revealFade;
+}
+
+.reveal-up {
+  animation-name: revealUp;
+}
+
+.reveal-delay-1 {
+  animation-delay: 120ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 220ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 320ms;
+}
+
+@keyframes revealFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(76, 143, 125, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(76, 143, 125, 0.6);
+  }
+}

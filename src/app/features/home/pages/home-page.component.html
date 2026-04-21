@@ -1,0 +1,174 @@
+<app-site-navbar />
+
+<app-hero />
+
+<main>
+  <section class="section-block section-soft section-compact">
+    <div class="container">
+      <div class="row g-4 stagger-group">
+        @for (card of content().heroContextCards; track card.title; let i = $index) {
+          <div class="col-12 col-sm-6 col-xl-3">
+            <article class="advantage-card reveal-up" [style.animation-delay.ms]="i * 100">
+              <div class="advantage-card__icon" [style.animation-delay.ms]="i * 100 + 200">{{ card.icon }}</div>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.text }}</p>
+            </article>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block section-highlight section-lumexir">
+    <div class="lumexir-glow"></div>
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-6">
+          <div class="lumexir-media reveal-fade">
+            <div class="lumexir-frame">
+              <img
+                src="https://emovex.es/wp-content/uploads/2025/12/Lumexir-M15.webp"
+                alt="Equipo Lumexir M15 de EMOVEX"
+                loading="lazy"
+              />
+              <div class="lumexir-reflection"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <span class="section-kicker reveal-fade">{{ content().lumexirKicker }}</span>
+          <h2 class="section-title reveal-up">{{ content().lumexirTitle }}</h2>
+          <p class="section-copy reveal-up reveal-delay-1">{{ content().lumexirCopy }}</p>
+
+          <div class="chip-grid reveal-up reveal-delay-2">
+            @for (point of content().lumexirPoints; track point; let i = $index) {
+              <span class="chip" [style.animation-delay.ms]="i * 80">{{ point }}</span>
+            }
+          </div>
+
+          <div class="mt-4 reveal-up reveal-delay-2">
+            <a class="btn btn-accent btn-lg btn-glow" href="https://emovex.es/lumexir-m15-fotodepilacion-shr-rf/" target="_blank" rel="noopener">
+              {{ content().lumexirCta }}
+              <span class="btn-shine"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="soluciones" class="section-block section-soft">
+    <div class="container">
+      <div class="row g-4 align-items-end mb-5">
+        <div class="col-12 col-lg-7">
+          <span class="section-kicker reveal-fade">{{ content().solutionsKicker }}</span>
+          <h2 class="section-title reveal-up">{{ content().solutionsTitle }}</h2>
+        </div>
+        <div class="col-12 col-lg-5">
+          <p class="section-copy reveal-up reveal-delay-1">{{ content().solutionsCopy }}</p>
+        </div>
+      </div>
+
+      <div class="row g-4 stagger-group">
+        @for (card of content().valueCards; track card.title; let i = $index) {
+          <div class="col-12 col-md-6 col-xl-4">
+            <article class="solution-card reveal-up" [style.animation-delay.ms]="i * 120">
+              <div class="solution-card__media">
+                <img [src]="card.image" [alt]="card.title" loading="lazy" />
+                <div class="solution-card__glow"></div>
+              </div>
+              <div class="solution-card__content">
+                <div class="info-card__index">0{{ $index + 1 }}</div>
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.text }}</p>
+              </div>
+            </article>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="ventajas" class="section-block">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-5">
+          <div class="advantages-media reveal-fade">
+            <img
+              src="DISPOSITIVO-INTELTEK.png"
+              alt="Tecnología EMOVEX"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-lg-7">
+          <div class="product-panel reveal-fade">
+            <span class="section-kicker">{{ content().advantagesKicker }}</span>
+            <h2 class="section-title">{{ content().advantagesTitle }}</h2>
+            <p class="section-copy">{{ content().advantagesCopy }}</p>
+            <div class="chip-grid">
+              @for (item of content().productHighlights; track item) {
+                <span class="chip">{{ item }}</span>
+              }
+            </div>
+          </div>
+          <div class="timeline-panel mt-5">
+            @for (item of content().timeline; track item.title) {
+              <article
+                class="timeline-item reveal-up"
+                [class.reveal-delay-1]="$index === 1"
+                [class.reveal-delay-2]="$index === 2"
+              >
+                <strong>{{ item.title }}</strong>
+                <p>{{ item.text }}</p>
+              </article>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="distribucion" class="section-block section-dark">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-6">
+          <span class="section-kicker text-accent">{{ content().distributionKicker }}</span>
+          <h2 class="section-title text-white">{{ content().distributionTitle }}</h2>
+          <p class="section-copy text-white-50">{{ content().distributionCopy }}</p>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="audience-grid">
+            @for (audience of content().audiences; track audience.title) {
+              <article
+                class="audience-card reveal-up"
+                [class.reveal-delay-1]="$index === 1"
+                [class.reveal-delay-2]="$index === 2"
+              >
+                <h3>{{ audience.title }}</h3>
+                <p>{{ audience.text }}</p>
+              </article>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section-block section-soft">
+    <div class="container">
+      <div class="contact-panel reveal-fade">
+        <div>
+          <span class="section-kicker">{{ content().contactKicker }}</span>
+          <h2 class="section-title">{{ content().contactTitle }}</h2>
+          <p class="section-copy mb-0">{{ content().contactCopy }}</p>
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-accent btn-lg" href="mailto:buzon@emovex.es">{{ content().contactPrimary }}</a>
+          <a class="btn btn-outline-dark btn-lg" href="tel:+34608361260">{{ content().contactSecondary }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

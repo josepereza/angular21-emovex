@@ -1,0 +1,43 @@
+<section class="hero-section">
+  <div class="hero-backdrop"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center py-5" style="min-height: 85vh;">
+      <div class="col-12 col-lg-7">
+        <div class="eyebrow reveal-fade">{{ content().eyebrow }}</div>
+        <h1 class="hero-title reveal-up">{{ content().title }}</h1>
+        <p class="hero-copy reveal-up reveal-delay-1">{{ content().copy }}</p>
+
+        <div class="d-flex flex-wrap gap-3 reveal-up reveal-delay-2">
+          <a class="btn btn-accent btn-lg" href="#contacto">{{ content().primaryCta }}</a>
+          <a class="btn btn-outline-light btn-lg btn-ghost" href="#soluciones">
+            {{ content().secondaryCta }}
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="hero-card reveal-fade reveal-delay-2" aria-label="Resumen visual de valor">
+          <div class="hero-card__badge">{{ content().badge }}</div>
+          <div class="hero-card__content">
+            <p class="hero-card__label">{{ content().cardLabel }}</p>
+            <h2>{{ content().cardTitle }}</h2>
+            <p>{{ content().cardCopy }}</p>
+          </div>
+          <div class="hero-card__image">
+            <img src="DSC04785-TR.png" alt="Lumexir M15 equipo de fotodepilación" loading="lazy" />
+          </div>
+          <div class="hero-metrics">
+            <article>
+              <strong>{{ content().metric1 }}</strong>
+              <span>{{ content().metric1Copy }}</span>
+            </article>
+            <article>
+              <strong>{{ content().metric2 }}</strong>
+              <span>{{ content().metric2Copy }}</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
