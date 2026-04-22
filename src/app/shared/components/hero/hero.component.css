@@ -292,8 +292,93 @@
   }
 }
 
-@media (max-width: 991.98px) {
-  .hero-title {
-    max-width: 100%;
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding-top: 10px;
+  }
+
+  .hero-card {
+    max-width: 85%;
+    margin: 1.5rem auto 0;
+    padding: 0.6rem;
+  }
+
+  .hero-card__badge {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.55rem;
+  }
+
+  .hero-card__content h2 {
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+  }
+
+  .hero-card__content p {
+    font-size: 0.8rem;
+    line-height: 1.25;
+  }
+
+  .hero-card__label {
+    font-size: 0.55rem;
+  }
+
+  .hero-card__image {
+    max-width: 120px;
+    margin: 0 auto 0.4rem;
+  }
+
+  .hero-metrics {
+    gap: 0.2rem;
+  }
+
+  .hero-metrics article {
+    padding: 0.25rem 0.4rem;
+  }
+
+  .hero-metrics strong {
+    font-size: 0.7rem;
+  }
+
+  .hero-metrics span {
+    font-size: 0.55rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .hero-copy {
+    font-size: 0.9rem;
+  }
+
+  .btn-lg {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.hero-card {
+  animation: cardFloat 8s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0) rotateX(0);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(1deg);
+  }
+}
+
+.hero-card__image img {
+  animation: imageFloat 6s ease-in-out infinite;
+}
+
+@keyframes imageFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }

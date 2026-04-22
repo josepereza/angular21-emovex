@@ -164,7 +164,43 @@
           <h2 class="section-title">{{ content().contactTitle }}</h2>
           <p class="section-copy mb-0">{{ content().contactCopy }}</p>
         </div>
-        <div class="d-flex flex-wrap gap-3">
+      </div>
+
+      <div class="contact-form-wrapper reveal-up">
+        <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <label for="name" class="form-label">{{ language() === 'es' ? 'Nombre' : 'Name' }}</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="email" class="form-label">{{ language() === 'es' ? 'Email' : 'Email' }}</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="phone" class="form-label">{{ language() === 'es' ? 'Teléfono' : 'Phone' }}</label>
+              <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="formData.phone" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="clientType" class="form-label">{{ language() === 'es' ? 'Tipo de cliente' : 'Client type' }}</label>
+              <select class="form-select" id="clientType" name="clientType" [(ngModel)]="formData.clientType" required>
+                <option value="" disabled selected>{{ language() === 'es' ? 'Selecciona tipo' : 'Select type' }}</option>
+                <option value="estetica">{{ language() === 'es' ? 'Centro de estética' : 'Aesthetic Center' }}</option>
+                <option value="distribuidor">{{ language() === 'es' ? 'Distribuidor' : 'Distributor' }}</option>
+                <option value="profesional">{{ language() === 'es' ? 'Profesional' : 'Professional' }}</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">{{ language() === 'es' ? 'Mensaje' : 'Message' }}</label>
+              <textarea class="form-control" id="message" name="message" [(ngModel)]="formData.message" rows="3"></textarea>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-actions reveal-fade">
+        <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
           <a class="btn btn-accent btn-lg" href="mailto:buzon@emovex.es">{{ content().contactPrimary }}</a>
           <a class="btn btn-outline-dark btn-lg" href="tel:+34608361260">{{ content().contactSecondary }}</a>
         </div>

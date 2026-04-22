@@ -1,19 +1,46 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, effect, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../../core/services/language.service';
 import { HeroComponent } from '../../../shared/components/hero/hero.component';
 import { SiteNavbarComponent } from '../../../shared/components/site-navbar/site-navbar.component';
 import { SeoService } from '../../../core/services/seo.service';
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  clientType: string;
+  message: string;
+}
+
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, HeroComponent, SiteNavbarComponent],
+  imports: [CommonModule, HeroComponent, SiteNavbarComponent, FormsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
   private readonly seo = inject(SeoService);
   private readonly languageService = inject(LanguageService);
+
+  protected readonly language = this.languageService.language;
+
+  protected formData: ContactFormData = {
+    name: '',
+    email: '',
+    phone: '',
+    clientType: '',
+    message: ''
+  };
+
+  protected onSubmit(): void {
+    console.log('Form submitted:', this.formData);
+    const mailtoLink = `mailto:buzon@emovex.es?subject=${encodeURIComponent(this.languageService.language() === 'es' ? 'Solicitud de información' : 'Information request')}&body=${encodeURIComponent(
+      `Nombre: ${this.formData.name}\nEmail: ${this.formData.email}\nTeléfono: ${this.formData.phone}\nTipo: ${this.formData.clientType}\nMensaje: ${this.formData.message}`
+    )}`;
+    window.location.href = mailtoLink;
+  }
 
   protected readonly content = computed(() => {
     if (this.languageService.language() === 'en') {
