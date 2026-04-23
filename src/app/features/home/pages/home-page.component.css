@@ -6,6 +6,42 @@ main {
   padding: clamp(4.5rem, 8vw, 7.5rem) 0;
 }
 
+.section-animated {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section-animated > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-animated::before,
+.section-animated::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-animated::before {
+  inset: auto auto -9rem -6rem;
+  width: clamp(14rem, 28vw, 24rem);
+  height: clamp(14rem, 28vw, 24rem);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(202, 232, 223, 0.22) 0%, transparent 68%);
+  animation: sectionOrb 15s ease-in-out infinite;
+}
+
+.section-animated::after {
+  inset: 0;
+  background: linear-gradient(120deg, transparent 15%, rgba(255, 255, 255, 0.16) 50%, transparent 85%);
+  opacity: 0.28;
+  transform: translateX(-35%);
+  animation: sectionSweep 18s linear infinite;
+}
+
 .section-compact {
   padding: 2.5rem 0 1.5rem;
 }
@@ -153,13 +189,7 @@ main {
   text-transform: uppercase;
 }
 
-.section-dark .section-title {
-  max-width: 100%;
-  background: linear-gradient(135deg, #ffffff 0%, #cae8df 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+.section-title {
   margin-bottom: 0;
   color: var(--color-ink);
   font-size: clamp(2.3rem, 4vw, 4rem);
@@ -172,18 +202,14 @@ main {
   background-clip: text;
   position: relative;
   display: inline-block;
-  animation: titleSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes titleSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.section-dark .section-title {
+  max-width: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #cae8df 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .solution-card h3,
@@ -193,7 +219,6 @@ main {
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--color-ink);
-  animation: cardTitleReveal 0.6s ease-out backwards;
 }
 
 .solution-card h3,
@@ -230,15 +255,6 @@ main {
   opacity: 0.5;
 }
 
-.solution-card__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(26, 61, 46, 0.15) 100%);
-  pointer-events: none;
-  transition: opacity 300ms ease;
-}
-
 .solution-card__glow {
   position: absolute;
   inset: 0;
@@ -250,7 +266,7 @@ main {
   animation: glowPulse 3s ease-in-out infinite;
 }
 
-solution-card:hover .solution-card__glow {
+.solution-card:hover .solution-card__glow {
   opacity: 1;
 }
 
@@ -263,33 +279,6 @@ solution-card:hover .solution-card__glow {
     transform: scale(1.05);
     opacity: 1;
   }
-}
-
-@keyframes floatCard {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.solution-card__content {
-  padding: 1.75rem;
-  position: relative;
-}
-
-.solution-card__content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 1.75rem;
-  right: 1.75rem;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-accent-strong), var(--color-accent));
-  border-radius: 0 0 4px 4px;
-  transform: scaleX(0);
-  transition: transform 300ms ease;
 }
 
 .solution-card__content {
@@ -468,12 +457,6 @@ solution-card:hover .solution-card__glow {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-.advantage-card__icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
 .advantage-card h3 {
   margin-bottom: 0.75rem;
   font-size: 1.2rem;
@@ -519,12 +502,19 @@ solution-card:hover .solution-card__glow {
   border-radius: 1.75rem;
   overflow: hidden;
   box-shadow: 0 28px 70px rgba(13, 21, 32, 0.12);
+  animation: mediaFloat 7s ease-in-out infinite;
 }
 
 .advantages-media img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 350ms ease, filter 350ms ease;
+}
+
+.advantages-media:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.05);
 }
 
 .lumexir-media {
@@ -707,16 +697,15 @@ solution-card:hover .solution-card__glow {
   transform: translateX(4px);
 }
 
-.audience-card p {
-  color: rgba(255, 255, 255, 0.72);
-}
-
 .contact-panel {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
   align-items: center;
   padding: clamp(1.75rem, 4vw, 3rem);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.68)),
+    radial-gradient(circle at top right, rgba(202, 232, 223, 0.34), transparent 38%);
 }
 
 @media (max-width: 991.98px) {
@@ -737,6 +726,7 @@ solution-card:hover .solution-card__glow {
   border: 1px solid rgba(20, 31, 46, 0.08);
   box-shadow: 0 28px 70px rgba(13, 21, 32, 0.08);
   backdrop-filter: blur(18px);
+  position: relative;
 }
 
 .contact-form .form-label {
@@ -770,15 +760,28 @@ solution-card:hover .solution-card__glow {
   opacity: 0.6;
 }
 
-.contact-form .form-control:focus,
-.contact-form .form-select:focus {
-  border-color: var(--color-accent-strong);
-  box-shadow: 0 0 0 4px rgba(76, 143, 125, 0.15);
-  outline: none;
-}
-
 .contact-actions {
   margin-top: 2rem;
+  padding: 1.1rem 1.25rem 0;
+}
+
+.contact-actions .btn {
+  min-width: min(100%, 220px);
+  border-radius: 999px;
+  box-shadow: 0 16px 40px rgba(25, 35, 51, 0.12);
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.contact-actions .btn:hover,
+.contact-actions .btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px rgba(25, 35, 51, 0.18);
+}
+
+.contact-actions .btn-outline-dark {
+  border-width: 1.5px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
 }
 
 .contact-panel {
@@ -837,6 +840,33 @@ solution-card:hover .solution-card__glow {
   }
 }
 
+@keyframes sectionOrb {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2rem, -1.25rem, 0) scale(1.12);
+  }
+}
+
+@keyframes sectionSweep {
+  0% {
+    transform: translateX(-35%);
+  }
+  100% {
+    transform: translateX(35%);
+  }
+}
+
+@keyframes mediaFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .contact-form-wrapper:hover {
   transform: translateY(-4px);
   box-shadow: 0 35px 80px rgba(13, 21, 32, 0.12);
@@ -892,5 +922,31 @@ solution-card:hover .solution-card__glow {
 
   .hero-metrics article {
     padding: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-animated::before,
+  .section-animated::after,
+  .lumexir-glow,
+  .lumexir-frame,
+  .btn-glow::before,
+  .btn-shine,
+  .chip,
+  .advantages-media,
+  .contact-panel::before,
+  .contact-form-wrapper::before {
+    animation: none !important;
+  }
+
+  .solution-card,
+  .advantage-card,
+  .audience-card,
+  .timeline-item,
+  .advantages-media img,
+  .contact-form-wrapper,
+  .contact-form .form-control,
+  .contact-form .form-select {
+    transition: none !important;
   }
 }
